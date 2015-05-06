@@ -1,18 +1,8 @@
-# The official raywenderlich.com Objective-C style guide.
+# The Onefootball Objective-C style guide.
 
-This style guide outlines the coding conventions for raywenderlich.com.
+This style guide outlines the coding conventions for Onefootball GmbH.
 
-## Introduction
-
-The reason we made this style guide was so that we could keep the code in our books, tutorials, and starter kits nice and consistent - even though we have many different authors working on the books.
-
-This style guide is different from other Objective-C style guides you may see, because the focus is centered on readability for print and the web. Many of the decisions were made with an eye toward conserving space for print, easy legibility, and tutorial writing.
-
-## Credits
-
-The creation of this style guide was a collaborative effort from various raywenderlich.com team members under the direction of Nicholas Waynik.  The team includes: [Soheil Moayedi Azarpour](https://github.com/moayes), [Ricardo Rendon Cepeda](https://github.com/ricardo-rendoncepeda), [Tony Dahbura](https://github.com/tdahbura), [Colin Eberhardt](https://github.com/ColinEberhardt), [Matt Galloway](https://github.com/mattjgalloway), [Greg Heo](https://github.com/gregheo), [Matthijs Hollemans](https://github.com/hollance), [Christopher LaPollo](https://github.com/elephantronic), [Saul Mora](https://github.com/casademora), [Andy Pereira](https://github.com/macandyp), [Mic Pringle](https://github.com/micpringle), [Pietro Rea](https://github.com/pietrorea), [Cesare Rocchi](https://github.com/funkyboy), [Marin Todorov](https://github.com/icanzilb), [Nicholas Waynik](https://github.com/ndubbs), and [Ray Wenderlich](https://github.com/raywenderlich)
-
-We would like to thank the creators of the [New York Times](https://github.com/NYTimes/objective-c-style-guide) and [Robots & Pencils'](https://github.com/RobotsAndPencils/objective-c-style-guide) Objective-C Style Guides.  These two style guides provided a solid starting point for this guide to be created and based upon.
+Writing Swift? Check out our [Swift Style Guide](https://github.com/motain/swift-style-guide) too.
 
 ## Background
 
@@ -115,7 +105,7 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 
 ## Spacing
 
-* Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
+* Indent using 4 spaces.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 
 **Preferred:**
@@ -211,7 +201,7 @@ Properties should be camel-case with the leading word being lowercase. Use auto-
 **Preferred:**
 
 ```objc
-@property (strong, nonatomic) NSString *descriptiveVariableName;
+@property (nonatomic, strong) NSString *descriptiveVariableName;
 ```
 
 **Not Preferred:**
@@ -267,7 +257,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 ```objc
 @interface RWTTutorial : NSObject
 
-@property (strong, nonatomic) NSString *tutorialName;
+@property (nonatomic, strong) NSString *tutorialName;
 
 @end
 ```
@@ -283,20 +273,20 @@ Direct access to instance variables that 'back' properties should be avoided exc
 
 ## Property Attributes
 
-Property attributes should be explicitly listed, and will help new programmers when reading the code.  The order of properties should be storage then atomicity, which is consistent with automatically generated code when connecting UI elements from Interface Builder.
+Property attributes should be explicitly listed, and will help new programmers when reading the code.  The order of properties should be atomicity and then storage. In fully ARC project `strong` and `assign` are not necessary.
 
 **Preferred:**
 
 ```objc
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) NSString *tutorialName;
+@property (nonatomic, weak) IBOutlet UIView *containerView;
+@property (nonatomic, strong) NSString *tutorialName;
 ```
 
 **Not Preferred:**
 
 ```objc
-@property (nonatomic, weak) IBOutlet UIView *containerView;
-@property (nonatomic) NSString *tutorialName;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (strong, nonatomic) NSString *tutorialName;
 ```
 
 Properties with mutable counterparts (e.g. NSString) should prefer `copy` instead of `strong`. 
@@ -305,13 +295,13 @@ Why? Even if you declared a property as `NSString` somebody might pass in an ins
 **Preferred:**
 
 ```objc
-@property (copy, nonatomic) NSString *tutorialName;
+@property (nonatomic, copy) NSString *tutorialName;
 ```
 
 **Not Preferred:**
 
 ```objc
-@property (strong, nonatomic) NSString *tutorialName;
+@property (nonatomic, strong) NSString *tutorialName;
 ```
 
 ## Dot-Notation Syntax
@@ -482,9 +472,9 @@ Private properties should be declared in class extensions (anonymous categories)
 ```objc
 @interface RWTDetailViewController ()
 
-@property (strong, nonatomic) GADBannerView *googleAdView;
-@property (strong, nonatomic) ADBannerView *iAdView;
-@property (strong, nonatomic) UIWebView *adXWebView;
+@property (nonatomic, strong) GADBannerView *googleAdView;
+@property (nonatomic, strong) ADBannerView *iAdView;
+@property (nonatomic, strong) UIWebView *adXWebView;
 
 @end
 ```
@@ -498,14 +488,15 @@ This allows for more consistency across files and greater visual clarity.
 **Preferred:**
 
 ```objc
-if (someObject) {}
+if (someObject == nil) {}
+if (someObject != nil) {}
 if (![anotherObject boolValue]) {}
 ```
 
 **Not Preferred:**
 
 ```objc
-if (someObject == nil) {}
+if (someObject) {}
 if ([anotherObject boolValue] == NO) {}
 if (isAwesome == YES) {} // Never do this.
 if (isAwesome == true) {} // Never do this.
@@ -701,25 +692,9 @@ self.productsRequest = [[SKProductsRequest alloc]
   initWithProductIdentifiers:productIdentifiers];
 ```
 
-
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ascii art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
-
-**Preferred:**
-```objc
-:]
-```
-
-**Not Preferred:**
-```objc
-:)
-```  
-
-
 ## Xcode project
 
-The physical files should be kept in sync with the Xcode project files in order to avoid file sprawl. Any Xcode groups created should be reflected by folders in the filesystem. Code should be grouped not only by type, but also by feature for greater clarity.
+The physical files should be kept in sync with the Xcode project files in order to avoid file sprawl. Any Xcode groups created should be reflected by folders in the filesystem. Code should be grouped not only by type, but also by feature for greater clarity. Files should be always sorted by name so headers are before implementations.
 
 When possible, always turn on "Treat Warnings as Errors" in the target's Build Settings and enable as many [additional warnings](http://boredzo.org/blog/archives/2009-11-07/warnings) as possible. If you need to ignore a specific warning, use [Clang's pragma feature](http://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
 
@@ -736,3 +711,11 @@ If ours doesn't fit your tastes, have a look at some other style guides:
 * [CocoaDevCentral](http://cocoadevcentral.com/articles/000082.php)
 * [Luke Redpath](http://lukeredpath.co.uk/blog/my-objective-c-style-guide.html)
 * [Marcus Zarra](http://www.cimgf.com/zds-code-style-guide/)
+
+
+## Credits
+
+The creation of this style guide was a collaborative effort from various raywenderlich.com team members under the direction of Nicholas Waynik.  The team includes: [Soheil Moayedi Azarpour](https://github.com/moayes), [Ricardo Rendon Cepeda](https://github.com/ricardo-rendoncepeda), [Tony Dahbura](https://github.com/tdahbura), [Colin Eberhardt](https://github.com/ColinEberhardt), [Matt Galloway](https://github.com/mattjgalloway), [Greg Heo](https://github.com/gregheo), [Matthijs Hollemans](https://github.com/hollance), [Christopher LaPollo](https://github.com/elephantronic), [Saul Mora](https://github.com/casademora), [Andy Pereira](https://github.com/macandyp), [Mic Pringle](https://github.com/micpringle), [Pietro Rea](https://github.com/pietrorea), [Cesare Rocchi](https://github.com/funkyboy), [Marin Todorov](https://github.com/icanzilb), [Nicholas Waynik](https://github.com/ndubbs), and [Ray Wenderlich](https://github.com/raywenderlich)
+
+We would like to thank the creators of the [New York Times](https://github.com/NYTimes/objective-c-style-guide) and [Robots & Pencils'](https://github.com/RobotsAndPencils/objective-c-style-guide) Objective-C Style Guides.  These two style guides provided a solid starting point for this guide to be created and based upon.
+

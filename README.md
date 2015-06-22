@@ -40,8 +40,8 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Error handling](#error-handling)
 * [Singletons](#singletons)
 * [Line Breaks](#line-breaks)
+* [Nullability](#nullability)
 * [Xcode Project](#xcode-project)
-
 
 ## Language
 
@@ -676,6 +676,13 @@ Singleton objects should use a thread-safe pattern for creating their shared ins
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
 
+## Nullability
+
+Use ```NS_ASSUME_NONNULL_BEGIN / END``` macros for all interfaces where you wish to specify nullability and specify ```null_resettable``` or ```nullable``` whenever it is needed.
+
+Specify nullability annotations only in header files.
+
+If you are modifying existing headers without nullability annotations it is preferred you specifiy it for the entire header and try to figure it out what is true for other properties and methods.
 
 ## Line Breaks
 

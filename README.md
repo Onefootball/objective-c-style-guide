@@ -220,7 +220,7 @@ Local variables should not contain underscores.
 
 ### Class Subclasses
 
-Subclasses of specific type such as buttons, cells, controllers and so on should contain this information in their name.
+Subclasses of specific type such as buttons, cells, controllers and so on should contain this information at the end in their name.
 
 **Preferred:**
 

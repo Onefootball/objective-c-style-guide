@@ -682,7 +682,7 @@ Use ```NS_ASSUME_NONNULL_BEGIN / END``` macros for all interfaces where you wish
 
 Specify nullability annotations only in header files.
 
-If you are modifying an existing headers without nullability annotations it is preferred you specifiy it for the entire header and try to figure it out what is true for other properties and methods.
+If you are modifying existing headers without nullability annotations it is preferred you specifiy it for the entire header and try to figure it out what is true for other properties and methods.
 
 ## Line Breaks
 

@@ -19,6 +19,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Code Organization](#code-organization)
 * [Spacing](#spacing)
 * [Comments](#comments)
+  * [Documentation Comments](#documentation-comments)
 * [Naming](#naming)
   * [Underscores](#underscores)
 * [Methods](#methods)
@@ -160,6 +161,10 @@ else {
 When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
 
 Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. *Exception: This does not apply to those comments used to generate documentation.*
+
+### Documentation Comments
+
+Write [documentation comments](http://nshipster.com/documentation/) for as many classes as possible. Classes that are used across a project it is preferred to write comments for all public elements in that class.
 
 ## Naming
 

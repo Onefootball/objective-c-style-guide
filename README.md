@@ -2,7 +2,7 @@
 
 This style guide outlines the coding conventions for Onefootball GmbH.
 
-Writing Swift? Check out our [Swift Style Guide](https://github.com/motain/swift-style-guide) too.
+Writing Swift? Check out our [Swift Style Guide](https://github.com/Onefootball/swift-style-guide) too.
 
 ## Background
 

@@ -22,6 +22,7 @@ Here are some of the documents from Apple that informed the style guide. If some
   * [Documentation Comments](#documentation-comments)
 * [Naming](#naming)
   * [Underscores](#underscores)
+  * [Class Subclasses](#class-subclasses)
 * [Methods](#methods)
 * [Variables](#variables)
 * [Property Attributes](#property-attributes)
@@ -221,6 +222,27 @@ When using properties, instance variables should always be accessed and mutated 
 An exception to this: inside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
 
 Local variables should not contain underscores.
+
+### Class Subclasses
+
+Subclasses of specific type such as buttons, cells, controllers and so on should contain this information at the end in their name.
+
+**Preferred:**
+
+```objc
+@interface PFXFancyViewController : UIViewController
+@interface PFXFancyButton : UIButton
+@interface PFXFancyTableViewCell : UITableViewCell
+@interface PFXFancyCollectionViewCell : UICollectionViewCell
+```
+
+**Not Preferred:**
+
+```objc
+@interface PFXFancyController : UIViewController
+@interface PFXFancy : UIButton
+@interface PFXFancyCell : UITableViewCell
+```
 
 ## Methods
 
